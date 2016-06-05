@@ -1,0 +1,130 @@
+class LinkedList
+
+{
+
+    Node head;  
+
+    class Node
+
+    {
+
+        int data;
+
+        Node next;
+
+        Node(int d) {data = d; next = null; }
+
+    }
+    
+    public void insertBeg(int d)
+    {
+        Node x=new Node(d);
+        if(head==null)
+        {
+            head=x;
+            
+        }
+        else
+        {
+            x.next=head;
+            head=x;
+            
+        }
+    }
+    public void printList()
+    {  Node h;
+        h=head;
+        while(h!=null)
+        {
+           System.out.print(h.data+"->");
+           h=h.next;
+        }
+    }
+    public void insertEnd(int d)
+    { 
+        Node x=new Node(d);
+        if(head==null)
+        {
+            head=x;
+            
+        }
+        else
+        {Node n=head;
+            while(n.next!=null)
+            {
+                n=n.next;
+            
+            }
+            //System.out.println("here");
+            n.next=x;
+           
+        }
+        
+    }
+    public int findLength()
+    {int count=0;
+        Node n=head;
+        while(n!=null)
+        {
+            n=n.next;
+            count ++;
+            
+        }
+        return count;
+    }
+    
+    public void insertAtPosition(int d, int position)
+    { Node x=new Node(d);
+        if(position==1)
+         {insertBeg(d);
+         
+         }
+        else
+        {
+            int l=position-1;
+            Node n=head;
+            while(l!=0)
+            {   
+                n=n.next;
+                l--;
+            }
+            Node y=n.next;
+            n.next=x;
+            x.next=y;
+            
+        }
+    }
+    public void insertAfter(Node prev_node, int new_data)
+
+    {
+
+        if (prev_node == null)
+
+        {
+
+            System.out.println("The given previous node cannot be null");
+
+            return;
+
+        }
+
+        Node new_node = new Node(new_data);
+
+        new_node.next = prev_node.next;
+
+        prev_node.next = new_node;
+
+    }
+    public static void main(String s[])
+    {
+        LinkedList list1=new LinkedList();
+        list1.insertEnd(1);
+        list1.insertEnd(12);
+      
+        list1.insertEnd(14);
+          list1.insertAtPosition(13,2);
+        list1.printList();
+        System.out.println("\n"+list1.findLength());
+    }
+
+}
