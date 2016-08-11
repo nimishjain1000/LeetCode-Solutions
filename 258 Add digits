@@ -1,3 +1,20 @@
+/*
+1101 / 1101 test cases passed. Runtime: 12 ms
+O(1) Math Solution
+
+Based on the Wiki Page – Digit Root, we know that (1), the multiples of 9 has a digit root = 9, for example, 9, 18 (1+8), 27 (2+9), 189 (1+8+9=18=1+8) etc. and any other non-negative integers have a digit root which is 1 + floor((n – 1) % 9). For example, 11 is the second number after 9, so it has a digit root equals to 1 + ((11 – 1) % 9) = 2.
+
+82 is the first number after multiples of 9, so the digit root = 1 + ((82 – 1) % 9) = 1.
+
+class Solution {
+public:
+    int addDigits(int num) {
+        return 1 + ((num - 1) % 9);
+    }
+};
+
+/*
+// My solution
  public int addDigits(int num) {
        
         while(num>0)
