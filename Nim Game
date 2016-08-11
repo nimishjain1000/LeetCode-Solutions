@@ -1,0 +1,25 @@
+/**
+We know that both of the players want to win. And any player who is left with 4 stones on the heap will loose. So both player will try to place the other player on 4 stones left situation.
+
+    Let us say player 1 – starts with 8 Stones – he can pick either (1,2,3) stones making the number of stones left for player 2 (7,6,5).
+    Since player 2 wants to win, He will pick (3,2,1) stones depending on the player 1 pick to make the number of stones left for player 1 to be 4 and making player 1 lose.
+
+    similarly let us say player 1 – starts at 7 Stones – He will pick 3 stones making the number of stones left for player 2 to be 4, making player 2 lose.
+
+We can observe that whoever gets the first 4 multiple stones loose. So we say if (n%4 != 0) then player 1 can win, since he can make the number of stones left, multiple of 4. If he got multiple of 4 as number of stones he will lose as we saw above.
+
+Solution in c++
+*/
+
+
+class Solution {
+public:
+    bool canWinNim(int n) {
+         if(n==0)
+        return false;
+        if(n<=3)
+        return true;
+return n%4!=0;
+        
+    }
+};
