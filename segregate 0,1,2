@@ -1,0 +1,65 @@
+
+// Java program to sort an array of 0, 1 and 2
+import java.io.*;
+ 
+class countzot {
+ 
+    // Sort the input array, the array is assumed to
+    // have values in {0, 1, 2}
+    static void sort012(int a[], int arr_size)
+    {
+        int x=0,y=0,z;
+        for(int i=0;i<arr_size;i++)
+        {
+            if(a[i]==1)
+            x++;
+            if(a[i]==2)
+            y++;
+            
+        }
+        z=arr_size - (x+y);
+        for(int i=0;i<arr_size;i++)
+        {
+            if(z>0)
+            {
+                a[i]=0;
+                z--;
+            }
+            else 
+            {
+                if(x>0)
+                {
+                    a[i]=1;
+                    x--;
+                }
+                else
+                {
+                    a[i]=2;
+                }
+            }
+            
+        }
+    }
+ 
+    /* Utility function to print array arr[] */
+    static void printArray(int arr[], int arr_size)
+    {
+        int i;
+        for (i = 0; i < arr_size; i++)
+            System.out.print(arr[i]+" ");
+        System.out.println("");
+    }
+ 
+    /*Driver function to check for above functions*/
+    public static void main (String[] args)
+    {
+        int arr[] = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+        
+        int arr_size = arr.length;
+         printArray(arr, arr_size);
+         System.out.println("");
+        sort012(arr, arr_size);
+        System.out.println("Array after seggregation ");
+        printArray(arr, arr_size);
+    }
+}
