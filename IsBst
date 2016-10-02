@@ -1,0 +1,26 @@
+/* Hidden stub code will pass a root argument to the function below. Complete the function to solve the challenge. Hint: you may want to write one or more helper functions.  
+
+The Node class is defined as follows:
+    class Node {
+        int data;
+        Node left;
+        Node right;
+     }
+*/
+boolean checkUtil(Node root,int min,int max)
+    {
+    if(root==null)
+        return true;
+    if(root.data>min && root.data<max && checkUtil(root.left,min,root.data) &&checkUtil(root.right,root.data,max))
+        return true;
+    else
+        return false;
+       
+}
+    boolean checkBST(Node root) {
+        
+        int min=-6300;
+        int max=6300;
+        return checkUtil(root,min,max);
+        
+    }
