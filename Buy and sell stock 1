@@ -1,0 +1,33 @@
+Say you have an array for which the ith element is the price of a given stock on day i.
+
+If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+
+
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int l=prices.length;
+        
+        if(l<2)
+        return 0;
+        
+        
+        
+        int max=0;
+        int x;
+    
+             
+        int min= prices[0]>prices[1] ?prices[1] :prices[0];
+        
+        
+        for(int i=1;i<=l-1;i++)
+        {
+     x=prices[i]-min;
+     if(max<x)
+     max=x;
+     if(i+1<l)
+     {if(prices[i+1]<min)
+     min=prices[i+1];
+        }}
+          return max;
+    }
+}
