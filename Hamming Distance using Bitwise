@@ -1,0 +1,26 @@
+public class Solution {
+    public int hammingDistance(int x, int y) {
+        int a[]=new int[32];
+        int b[]=new int[32];
+        int i=0;
+        while(x>0)
+        {
+            a[i++]=x%2;
+            x/=2;
+        }
+        
+        int j=0;
+        while(y>0)
+        {
+            b[j++]=y%2;
+            y/=2;
+        }
+        int h=0;
+        for(int k=0;k<32;k++)
+        {
+            if((a[k] ^ b[k])==1) h++;
+        }
+        return h;
+        
+    }
+}
