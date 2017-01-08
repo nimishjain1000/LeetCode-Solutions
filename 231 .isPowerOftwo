@@ -1,5 +1,16 @@
 public class Solution {
     public boolean isPowerOfTwo(int n) {
+       
+    if(n>0 && (n& (n-1))==0) return true;
+    
+    else return false;
+    }
+}
+//
+
+
+public class Solution {
+    public boolean isPowerOfTwo(int n) {
         
         if((Math.log10(n)/Math.log10(2))%1==0) //here using log10() instead of log()( it results some wrong anwers for some test vase)
         return true ;
