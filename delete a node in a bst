@@ -1,0 +1,57 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    
+     TreeNode findMin(TreeNode node) {
+        TreeNode current = node;
+ 
+        /* loop down to find the leftmost leaf */
+        while (current.left != null) {
+            current = current.left;
+        }
+        return (current);
+    }
+    public TreeNode deleteNode(TreeNode root, int key) {
+        
+        if(root==null )return null;
+        
+    else if(key <root.val) root.left=deleteNode(root.left,key);
+        else if(key >root.val) root.right=deleteNode(root.right,key);
+        else
+        {  // when the found node has no child
+            if(root.left==null && root.right==null)
+            {
+                root=null;
+                return root;
+            }
+            // when only right child
+            else if(root.left==null)
+        {
+            root=root.right;
+          
+        }
+        // when only left child
+            else if(root.right==null)
+        {
+            root=root.left;
+        
+        }
+        // when two child
+        else {
+            TreeNode temp=findMin(root.right);
+            root.val=temp.val;
+            root.right=deleteNode(root.right,temp.val);
+        }
+        
+        }
+        return root;
+        
+    }
+}
