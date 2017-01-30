@@ -1,0 +1,35 @@
+Node lca(Node node, int n1, int n2) 
+    {
+        if (node == null)
+            return null;
+  
+        // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (node.data > n1 && node.data > n2)
+            return lca(node.left, n1, n2);
+  
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        if (node.data < n1 && node.data < n2) 
+            return lca(node.right, n1, n2);
+  
+        return node;
+    }
+  
+  
+  
+  // iterative approach
+  struct node *lca(struct node* root, int n1, int n2)
+{
+    while (root != NULL)
+    {
+         // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (root->data > n1 && root->data > n2)
+           root = root->left;
+ 
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        else if (root->data < n1 && root->data < n2)
+           root = root->right;
+ 
+        else break;
+    }
+    return root;
+}
