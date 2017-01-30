@@ -1,0 +1,15 @@
+void move(LinkedList head)
+{
+if(head==null || head.next==null) return head;
+
+LinkedList last=head;
+Lisked List secLast=null;
+
+while(last.next!=null)
+{ secLast=last;
+last=last.next;}
+
+secLast.next=null;
+last.next=head;
+head=last;
+}
