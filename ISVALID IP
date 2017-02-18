@@ -1,0 +1,55 @@
+/* IMPORTANT: Multiple classes and nested static classes are supported */
+
+/*
+ * uncomment this if you want to read input.
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility  classes
+import java.util.*;
+*/
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+class TestClass {
+    public static final String DELIM = "\\.";
+     public static boolean isValidIP(String ip) {
+    if(ip == null || "".equals(ip.trim())) {
+      return false;
+    }
+
+    String[] parts = ip.split(DELIM);
+
+    if(parts.length != 4) {
+      return false;
+    }
+
+    for(String part : parts) {
+      try {
+        int intVal = Integer.parseInt(part);
+        if(intVal < 0 || intVal > 255) {
+          return false;
+        }
+
+      } catch(NumberFormatException nfe) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+    
+    public static void main(String args[] ) throws Exception {
+       
+         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String ip = br.readLine();
+ boolean p=isValidIP(ip);
+        if(p){
+            System.out.println("YES");
+        }else
+            System.out.println("NO");
+    
+    }
+}
