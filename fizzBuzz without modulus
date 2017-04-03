@@ -1,0 +1,29 @@
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    
+	    int a=3;
+	    int b=5;
+	    for(int i=1;i<50;i++){
+	        String s="";
+	        if(i==a)
+	        {
+	            a=a+3;
+	            s=s+"fizz";
+	        }
+	        
+	        if(i==b)
+	        {
+	            b=b+5;
+	            s=s+"buzz";
+	        }
+	       if(s=="")
+	        System.out.println(i);
+	      else  System.out.println(s);
+	        
+	        
+	    }
+		//code
+	}
+}
