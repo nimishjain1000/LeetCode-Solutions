@@ -1,0 +1,17 @@
+int maxSubArray(int a[], int size)
+{
+int maxending=0;
+int maxSoFar=0;
+for(int i=0;i<size;i++)
+{
+maxending+=a[i];
+if(maxending<0)
+{
+maxending=0}
+
+if(maxending>maxSoFar)
+maxSoFar=maxending;
+
+}
+return maxSoFar;
+}
