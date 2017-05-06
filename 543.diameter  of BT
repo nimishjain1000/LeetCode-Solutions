@@ -1,4 +1,10 @@
 /**
+We can solve this problem with two different cases:
+
+    If the longest path will include the root node, then the longest path must be the depth(root->right) + depth (root->left)
+    If the longest path does not include the root node, this problem is divided into 2 sub-problem: set left child and right child as the new root separately, and repeat step1.
+
+We could get the solution by returning the max path of 1 and 2.
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
