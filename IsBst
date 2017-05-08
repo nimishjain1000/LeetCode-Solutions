@@ -24,3 +24,4 @@ boolean checkUtil(Node root,int min,int max)
         return checkUtil(root,min,max);
         
     }
+    
