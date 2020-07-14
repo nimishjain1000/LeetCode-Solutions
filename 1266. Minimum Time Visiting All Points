@@ -1,0 +1,69 @@
+class Solution {
+public:
+    int minTimeToVisitAllPoints(vector<vector<int>>& points) {
+        
+        int minTime = 0;
+        
+        for(int i = 0 ; i < points.size()-1;i++)
+        {
+            int x1 = points[i][0];
+            int y1 = points[i][1];
+            
+            int x2 = points[i+1][0];
+            int y2 = points[i+1][1];
+            int time = 0;
+            while(1)
+            {
+                if(x1 == x2 && y1 == y2){
+                    break;
+                }
+                else if(x1 == x2 ){
+                    if(y2>y1){
+                        y1++;
+                        
+                    }else{
+                        y1--;
+                        
+                    }
+                    time++;
+                }
+                else if(y1 == y2 ){
+                    if(x2>x1){
+                        x1++;
+                        
+                    }else{
+                        x1--;
+                        
+                    }
+                    time++;
+                }
+                else{
+                    // first quadrant 
+                    //cout<< x1<<" "<<x2<<endl;
+                    if(x2>x1 && y2> y1){
+                        x1++;
+                        y1++;
+                    }else if(x2>x1 && y2< y1)
+                    {
+                        x1++;
+                        y1--;
+                    }
+                    else if(x2<x1 && y2> y1)
+                    {
+                        x1--;
+                        y1++;
+                    }
+                    else if(x2<x1 && y2< y1)
+                    {
+                        x1--;
+                        y1--;
+                    }
+                    time++;
+                }
+                
+            }
+            minTime = minTime+time;
+        }
+        return minTime;
+    }
+};
