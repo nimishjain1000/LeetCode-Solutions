@@ -1,0 +1,93 @@
+/*
+initialize mid and low to 0
+high  = len
+
+To achieve this in one pass without preprocessing (counting), we simply traverse the unknown will generating the low and high ends.
+
+Take this example:
+
+Assume our input is: 1 0 2 2 1 0 (short for simplicity).
+
+Running the algorithm by hand would look something like:
+
+    1 0 2 2 1 0
+    ^         ^
+    L         H
+    M
+
+    Mid != 0 || 2
+    Mid++
+
+    1 0 2 2 1 0
+    ^ ^       ^
+    L M       H
+
+    Mid == 0
+    Swap Low and Mid
+    Mid++
+    Low++
+
+    0 1 2 2 1 0
+      ^ ^     ^
+      L M     H
+
+    Mid == 2
+    Swap High and Mid
+    High--
+
+    0 1 0 2 1 2
+      ^ ^   ^
+      L M   H
+
+    Mid == 0
+    Swap Low and Mid
+    Mid++
+    Low++
+
+    0 0 1 2 1 2
+        ^ ^ ^
+        L M H
+
+    Mid == 2
+    Swap High and Mid
+    High--
+
+    0 0 1 1 2 2
+        ^ ^
+        L M
+          H
+
+    Mid <= High is our exit case
+
+*/
+class Solution {
+public:
+   void sortColors(vector<int>& nums) 
+    {
+        int tmp = 0, low = 0, mid = 0, high = nums.size() - 1;
+    
+        while(mid <= high)
+        {
+            if(nums[mid] == 0)
+            {
+                tmp = nums[low];
+                nums[low] = nums[mid];
+                nums[mid] = tmp;
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1)
+            {
+                mid++;
+            }
+            else if(nums[mid] == 2)
+            {
+                tmp = nums[high];
+                nums[high] = nums[mid];
+                nums[mid] = tmp;
+                high--;
+            }
+        }
+    }
+
+};
